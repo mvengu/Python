@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit "{{ member['HouseNumber'] }}" {% endblock %}</h1>
+
+<form method="post">
+   
+    <div class="form-group">
+        <label for="HouseNumber">House Number</label>
+        <input type="text" name="HouseNumber" 
+                placeholder="Member House Number" class="form-control"
+                value="{{ request.form['HouseNumber'] or member['HouseNumber'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="OwnerName">Owner Name</label>
+        <input type="text" name="OwnerName" 
+                placeholder="Member Name" class="form-control"
+                value="{{ request.form['OwnerName'] or member['OwnerName'] }}"></input>
+    </div>
+    
+    <div class="form-group">
+        <label for="MobileNumber">Mobile Number</label>
+        <input type="text" name="MobileNumber" 
+                placeholder="Member Contact Details" class="form-control"
+                value="{{ request.form['MobileNumber'] or member['MobileNumber'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update Member Details</button>
+    </div>
+</form>
+<hr>
+
+<hr>
+
+<form action="{{ url_for('delete_member', HouseNumber=member['HouseNumber']) }}" method="POST">
+    <input type="submit" value="Delete Member"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Are you sure you want to delete this member?')">
+</form>
+
+{% endblock %}

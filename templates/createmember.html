@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Member {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="HouseNumber">House Number</label>
+        <input type="text" name="HouseNumber"
+               placeholder="Member House Number" class="form-control"
+               value="{{ request.form['HouseNumber'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="OwnerName">Owner Name</label>
+        <input type="text" name="OwnerName" 
+                placeholder="Member Name" class="form-control"
+                value="{{ request.form['OwnerName'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="MobileNumber">Mobile Number</label>
+        <input type="text" name="MobileNumber" 
+                placeholder="Member Contact" class="form-control"
+                value="{{ request.form['MobileNumber'] }}"></input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create Member</button>
+    </div>
+</form>
+{% endblock %}

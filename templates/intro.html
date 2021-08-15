@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to XYZ Housing Complex {% endblock %}</h1>
+    <body>
+        <!-- <h2>Member List Begin</h2> -->
+        <Table class="table">
+            <tr>
+                <th>House Number</th>
+                <th>Owner Name</th>
+                <th>Mobile Number</th>
+                <th></th>
+            </tr>
+         
+        {% for mem in members %}
+        <tr class="active">
+            <td>
+                <a href="{{ url_for('member', HouseNumber=mem['HouseNumber']) }}">
+                    <H2><span class="badge badge-primary">{{ mem['HouseNumber'] }}</span></H2>
+                </a>
+            </td>
+            <td>
+                <H2>{{ mem['OwnerName'] }}</H2>
+            </td>
+            <td>
+                <H2>{{ mem['MobileNumber'] }}</H2>
+            </td>
+            <td>
+                <a href="{{ url_for('edit_member', HouseNumber=mem['HouseNumber']) }}">
+                    <H2>Edit<H2>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </Table>
+    <!-- <h2>Member List End</h2> -->
+    </body>
+{% endblock %}
